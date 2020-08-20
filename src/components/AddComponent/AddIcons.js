@@ -17,10 +17,10 @@ function AddIcons(props){
     const {image, randomize} = props
     return (
         <div className="villager-form">
-            <img
+            {image ? <img
                 style={styles.image}
                 src={require(`../assets/images/${image}`)}
-                alt="Villager"/>
+                alt={image}/> :null}
 
             <button
                 className = "btn"

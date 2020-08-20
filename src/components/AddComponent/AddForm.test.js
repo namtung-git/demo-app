@@ -27,7 +27,7 @@ describe('<AddForm />', () => {
       );
   });
 
-    it('should set the firstName value on change event with trim', () => {
+    it('should set the lastName value on change event with trim', () => {
         wrapper.find('input[name="lastName"]').simulate('change', {
             target: {
             name: "lastName",
@@ -39,7 +39,7 @@ describe('<AddForm />', () => {
         );
     });
 
-    it('should set the lastName value on change event with trim', () => {
+    it('should set the jobTitle value on change dropdown', () => {
         wrapper.find('select[name="job"]').simulate('change', {
             target: {
             name: "job",
