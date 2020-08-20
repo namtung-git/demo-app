@@ -1,5 +1,4 @@
 import React from 'react'
-import VillagerImage from '../utils/VillagerImage'
 
 function Card(props) {
     
@@ -9,7 +8,10 @@ function Card(props) {
     return (
         <div className="card" style={style}>
             <div className="card__content">
-                <VillagerImage style={{height: 80}} image={image}/>
+                <img
+                    style={{height: 80}}
+                    src={require(`../assets/images/${image}`)}
+                    alt="Villager"/>
                 <div className="card__info">
                     <span className="card__fullname">{fullName}</span>
                     <span className="card__title">{title}</span>

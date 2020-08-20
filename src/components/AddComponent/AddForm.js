@@ -57,7 +57,7 @@ function AddForm(props){
                     style = {styles.input}
                     name = "lastName"
                     placeholder = "Enter villager last name"
-                    values = {values.firstName}
+                    values = {values.lastName}
                     onChange = {handleChange}/>
 
                 {errors.lastName ? errors.lastName : null}

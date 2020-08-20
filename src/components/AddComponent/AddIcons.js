@@ -1,5 +1,4 @@
 import React from 'react'
-import VillagerImage from '../utils/VillagerImage'
 
 const styles = {
     button: {
@@ -18,7 +17,10 @@ function AddIcons(props){
     const {image, randomize} = props
     return (
         <div className="villager-form">
-            <VillagerImage style={styles.image} image = {image}/>
+            <img
+                style={styles.image}
+                src={require(`../assets/images/${image}`)}
+                alt="Villager"/>
 
             <button
                 className = "btn"
