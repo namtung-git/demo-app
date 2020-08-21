@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "@wdio/cli": "^6.4.0",
     "enzyme": "^3.11.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -36,6 +37,11 @@
     ]
   },
   "devDependencies": {
+    "@wdio/local-runner": "^6.4.0",
+    "@wdio/mocha-framework": "^6.4.0",
+    "@wdio/spec-reporter": "^6.4.0",
+    "@wdio/sync": "^6.4.0",
+    "chromedriver": "^84.0.1",
     "enzyme-adapter-react-16": "^1.15.3",
     "faker": "^4.1.0",
     "formik": "^2.1.5",
@@ -43,6 +49,7 @@
     "react-test-renderer": "^16.13.1",
     "rxjs": "^6.6.2",
     "selenium-standalone": "^6.18.0",
+    "wdio-chromedriver-service": "^6.0.3",
     "wdio-jasmine-framework": "^0.3.8",
     "wdio-spec-reporter": "^0.1.5",
     "webdriverio": "^6.4.0",
