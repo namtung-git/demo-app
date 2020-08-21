@@ -36,9 +36,4 @@ describe('<AddController />', () => {
       expect(wrapper.find('img').prop('alt')).toBe(`${randNumber*10}.gif`)
     })
 
-    it('should disable when click',() =>{
-      wrapper.find('button[type="submit"]').simulate('click')
-      expect(wrapper.find('button[type="submit"]').prop('disabled')).toBeTruthy()
-  })
-
 })

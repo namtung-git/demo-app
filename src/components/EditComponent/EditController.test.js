@@ -6,19 +6,7 @@ import Adapter from 'enzyme-adapter-react-16'
 Enzyme.configure({ adapter: new Adapter() })
 
 describe('<EditController />', () => {
-    let wrapper = Enzyme.mount(<EditController/>)
-
-    const originalConsoleError = console.error;
-
-    beforeEach(() => {
-      console.error = jest.fn((msg) => {
-        if (msg.includes('Warning: useLayoutEffect does nothing on the server')) {
-          return null;
-        } else {
-          originalConsoleError(msg);
-        }
-      });
-    });
+    let wrapper = Enzyme.shallow(<EditController/>)
 
     it('should match the snapshot', () => {
         expect(wrapper.html()).toMatchSnapshot();
