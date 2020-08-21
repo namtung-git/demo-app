@@ -24,19 +24,18 @@ function AddForm(props){
         addVillager,
     } = props
 
-    const {handleSubmit, handleChange, values, errors, isValid} = useFormik({
+    const {handleSubmit, handleChange, values, errors, isValid, validateForm} = useFormik({
         initialValues: {
             firstName: "",
             lastName: "",
             job: ""
         },
-        
         validationSchema: YupValidation,
-
         onSubmit(values){
             addVillager(values)
         }
     })
+
 
     return (
         <div className="villager-form">
@@ -57,7 +56,7 @@ function AddForm(props){
                     style = {styles.input}
                     name = "lastName"
                     placeholder = "Enter villager last name"
-                    values = {values.firstName}
+                    values = {values.lastName}
                     onChange = {handleChange}/>
 
                 {errors.lastName ? errors.lastName : null}

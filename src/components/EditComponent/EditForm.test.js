@@ -1,29 +1,38 @@
 import React from 'react'
 import Enzyme from 'enzyme'
-import AddForm from './AddForm'
+import EditForm from './EditForm'
 import Adapter from 'enzyme-adapter-react-16'
 import faker from 'faker'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-describe('<AddForm />', () => {
+describe('<EditForm />', () => {
 
-    let wrapper = Enzyme.shallow(<AddForm />)
-    let mock = {
+    let mockInitial = {
         firstName: faker.name.firstName(),
         lastName: faker.name.lastName(),
         job: faker.name.jobTitle()
     }
 
+    let mockUpdate = {
+        firstName: faker.name.firstName(),
+        lastName: faker.name.lastName(),
+        job: faker.name.jobTitle()
+    }
+
+    let mockDispatch = jest.fn()
+
+    let wrapper = Enzyme.shallow(<EditForm editVillager={mockInitial} closeEditor={mockDispatch}/>)
+
     it('should set the firstName value on change event with trim', () => {
       wrapper.find('input[name="firstName"]').simulate('change', {
           target: {
           name: "firstName",
-          value: mock.firstName,
+          value: mockUpdate.firstName,
         },
       });
       expect(wrapper.find('input[name="firstName"]').prop('values')).toEqual(
-        mock.firstName,
+        mockUpdate.firstName,
       );
   });
 
@@ -31,11 +40,11 @@ describe('<AddForm />', () => {
         wrapper.find('input[name="lastName"]').simulate('change', {
             target: {
             name: "lastName",
-            value: mock.lastName,
+            value: mockUpdate.lastName,
           },
         });
         expect(wrapper.find('input[name="lastName"]').prop('values')).toEqual(
-          mock.lastName,
+            mockUpdate.lastName,
         );
     });
 
@@ -43,12 +52,17 @@ describe('<AddForm />', () => {
         wrapper.find('select[name="job"]').simulate('change', {
             target: {
             name: "job",
-            value: mock.job,
+            value: mockUpdate.job,
           },
         });
         expect(wrapper.find('select[name="job"]').prop('value')).toEqual(
-          mock.job,
+          mockUpdate.job,
         );
     });
+
+    it('should close Editor value', () => {
+        wrapper.find('button[type="close"]').simulate('click')
+        expect(mockDispatch).toHaveBeenCalled();
+    })
 
 })

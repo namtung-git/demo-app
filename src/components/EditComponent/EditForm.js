@@ -55,7 +55,7 @@ function EditForm(props){
                     style = {styles.input}
                     name = "lastName"
                     placeholder = {values.lastName}
-                    values = {values.firstName}
+                    values = {values.lastName}
                     onChange = {handleChange}/>
 
                 {errors.lastName ? errors.lastName : null}
@@ -85,7 +85,7 @@ function EditForm(props){
                     Save the changes
                 </button>
             </form>
-            <button onClick={closeEditor} className="card__form">✕</button>
+            <button onClick={closeEditor} type="close" className="card__form">✕</button>
         </div>
         
     )
