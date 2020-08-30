@@ -18,12 +18,14 @@ function AddIcons(props){
     return (
         <div className="villager-form">
             {image ? <img
+                data-testid="icon"
                 style={styles.image}
                 src={require(`../assets/images/${image}`)}
                 alt={image}/> :null}
 
             <button
                 className = "btn"
+                data-testid="btn-randomize"
                 type = "randomize"
                 style = {{...styles.button, ...styles.buttonSmall}}
                 onClick={randomize}
