@@ -1,90 +1,55 @@
-image: node:12.18-slim
 stages:
-  - install
-  - test_unit
   - build
-  - test_build
+  - staging
+  - test_e2e
   - deploy
 
 variables:
   IMAGE_NAME: "demo-app"
   IMAGE_VERSION: "$CI_COMMIT_SHORT_SHA"
-  PORT_STAGING: "10004"
-  PORT_PRODUCTION: "10002"
-
-install:
-  stage: install
-  only:
-    - staging
-  script:
-    - npm install --silent
-  artifacts:
-    name: "artifacts"
-    untracked: true
-    expire_in: 60 mins
-    paths:
-      - node_modules/
-
-test_client:
-  stage: test_unit
-  only:
-    - staging
-  script:
-    - npm test
-  dependencies:
-    - install
+  PORT_STAGING: "10005"
+  PORT_PRODUCTION: "10004"
 
 build_client:
   stage: build
   only:
     - staging
   script:
-    - npm run build
-  dependencies:
-    - install
-  artifacts:
-    paths:
-      - build
-    expire_in: 60 mins
+    - docker build -t $IMAGE_NAME:$IMAGE_VERSION .
 
-test_build:
-  image: 18fgsa/html-proofer:gitlab-ci
-  stage: test_build
-  only:
-    - staging
-  script:
-    - htmlproofer build/
-  dependencies:
-    - build_client
 
 deploy_staging:
-  image: docker:18.09-git
   stage: deploy
   only:
     - staging
   environment:
     name: staging
-  dependencies:
-    - build_client
   before_script:
-    - docker build -t $IMAGE_NAME:$IMAGE_VERSION .
     - docker stop $IMAGE_NAME-stag || true && docker rm $IMAGE_NAME-stag || true
   script:
     - docker run -dit -p 127.0.0.1:$PORT_STAGING:80 --name $IMAGE_NAME-stag --restart unless-stopped $IMAGE_NAME:$IMAGE_VERSION
 
-# deploy_production:
-#   image: docker:18.09-git
-#   stage: deploy
-#   only:
-#     - production
-#   environment:
-#     name: production
-#   dependencies:
-#     - build_client
-#   before_script:
-#     - docker stop $IMAGE_NAME-stag || true && docker rm $IMAGE_NAME-stag || true
-#     - docker stop $IMAGE_NAME-prod || true && docker rm $IMAGE_NAME-prod || true
-#   script:
-#     - docker run -dit -p 127.0.0.1:$PORT_PRODUCTION:80 --name $IMAGE_NAME-prod --restart unless-stopped $IMAGE_NAME:$IMAGE_VERSION
-#   after_script:
-#     - docker container prune -f && docker image prune -f
+test_client:
+  image: ppodgorsek/robot-framework:latest
+  stage: test_e2e
+  environment: staging
+  only: 
+    - staging
+  script:
+    - docker run -v /home/potato/Desktop/my-app/tests/Results/:/opt/robotframework/reports:Z -v /home/potato/Desktop/my-app/tests/:/opt/robotframework/tests:Z --net=host ppodgorsek/robot-framework
+  
+deploy_production:
+  stage: deploy
+  only:
+    - production
+  environment:
+    name: production
+  dependencies:
+    - build_client
+  before_script:
+    - docker stop $IMAGE_NAME-stag || true && docker rm $IMAGE_NAME-stag || true
+    - docker stop $IMAGE_NAME-prod || true && docker rm $IMAGE_NAME-prod || true
+  script:
+    - docker run -dit -p 127.0.0.1:$PORT_PRODUCTION:80 --name $IMAGE_NAME-prod --restart unless-stopped $IMAGE_NAME:$IMAGE_VERSION
+  after_script:
+    - docker container prune -f && docker image prune -f

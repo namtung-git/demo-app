@@ -5,7 +5,7 @@ Library  SeleniumLibrary
 
 Provide Text Input
     Input Text   name=firstName   Tung
-    Input Text   name=lastName   Nasd
+    Input Text   name=lastName   Nguyen
     Select From List By Value  name=job  A Witcher
 
 Add Villager
