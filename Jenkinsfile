@@ -1,8 +1,9 @@
 pipeline {
+    agent any
     stages {
-        stage('env') {
+        stage('build') {
             steps {
-                sh 'docker -v'
+                sh 'docker ps'
             }
         }
     }
