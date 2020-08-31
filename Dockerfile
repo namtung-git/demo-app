@@ -11,6 +11,6 @@ RUN ls
 FROM nginx:1.14-alpine
 RUN rm -rf /etc/nginx/conf.d
 COPY conf /etc/nginx
-COPY build /usr/share/nginx/html
+COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
