@@ -1,9 +1,9 @@
 pipeline {
-    agent { docker { image 'node:10.19' } }
+    agent { docker { image 'docker:18.09-git' } }
     stages {
         stage('build') {
             steps {
-                sh 'npm --version'
+                sh 'docker build -t demo-app-jenkins .'
             }
         }
     }
