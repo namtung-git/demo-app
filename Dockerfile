@@ -1,4 +1,4 @@
-FROM node:12.18-slim as builder
+FROM node:10.19-slim as builder
 RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
