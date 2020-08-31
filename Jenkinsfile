@@ -1,9 +1,9 @@
 pipeline {
-    agent { docker { image 'node:10.19' } }
+    agent { docker { image 'node:10.19-slim' } }
     stages {
         stage('build') {
             steps {
-                sh 'npm --version'
+                sh 'npm install --silent'
             }
         }
     }
