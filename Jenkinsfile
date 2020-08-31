@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'docker ps'
+                sh 'ls'
+                sh 'docker build -t demo-app-jenkins .'
             }
         }
     }
