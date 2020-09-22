@@ -4,7 +4,7 @@ pipeline {
         stage('build') {
             steps {
                 sh 'ls'
-                sh 'robot tests/'
+                sh 'docker build -t demo-app-jenkins .'
             }
         }
     }
