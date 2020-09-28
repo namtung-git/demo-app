@@ -9,7 +9,7 @@ pipeline {
         }
         stage('test') {
             steps {
-                sh 'robot tests/'
+                sh 'docker run --net=host -v tests/:/opt/robotframework/test:Z ppodgorsek/robot-framework:latest'
             }
         }
     }
