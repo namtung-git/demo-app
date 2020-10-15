@@ -30,4 +30,4 @@ geckodriver --version
  robot TC0.robot
 ```
 7. Last but not least, keep learning and exploring!
-    - [Udemy course](https://www.udemy.com/course/robot-framework-level-1/) (I took this course from zero knowledge to master it in couple of days, you can do it too!)
+    - [Udemy course](https://www.udemy.com/course/robot-framework-level-1/) 
