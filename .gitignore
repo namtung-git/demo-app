@@ -11,7 +11,10 @@
 # production
 /build
 /tests/Results
-
+/geckodriver*
+/log*
+/output*
+/report*
 # misc
 .DS_Store
 .env.local
