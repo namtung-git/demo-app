@@ -12,9 +12,9 @@
 /build
 /tests/Results
 /geckodriver*
-/log*
-/output*
-/report*
+log*
+output*
+report*
 # misc
 .DS_Store
 .env.local
