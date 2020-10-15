@@ -5,12 +5,12 @@ RobotFramework is an open source test automation. It follow test case styles- ke
 ```bash
  pip install robotframework robotframework-seleniumlibrary
 ```
-2. After a successful installation with python, you should be able to execute following comamnd to verify
+2. Verify with Robot Framework installation
 ```bash
  robot --version
 ```
 
-3. Next you still need to install operating specific browser drivers for all browses you want to use in the test
+3. Install operating specific browser drivers for all browses you want to use in the test
 
     - [Chrome driver](https://sites.google.com/a/chromium.org/chromedriver/downloads)
     - [Firefox driver](https://github.com/mozilla/geckodriver/releases)
@@ -21,7 +21,13 @@ RobotFramework is an open source test automation. It follow test case styles- ke
 
     - A video tutorial can be found [here](https://youtu.be/ZqqIRgNn1vM?t=598)
 
-5. Start the test
+5. Verify with Firefox driver
+```
+geckodriver --version
+```
+6. Start the test
 ```
  robot TC0.robot
 ```
+7. Last but not least, keep learning and exploring!
+    - [Udemy course](https://www.udemy.com/course/robot-framework-level-1/) (I took this course from zero knowledge to master it in couple of days, you can do it too!)
