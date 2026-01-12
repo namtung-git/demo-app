@@ -10,6 +10,9 @@ The test suite involves:
 -   ensuring that a villager is successfully created :heavy_check_mark:
 
 ## Installation
+### *NOTE*: You need to install Nodejs v9 to run this application
+* `nvm install 9`
+* `nvm use 9`
 
 1. Clone repository 
 ```bash
@@ -28,7 +31,7 @@ The test suite involves:
  npm start
 ```
 5. Browse to http://localhost:3000
-6. To start Test cases
+6. (Optional) To start running Robot Test cases
 ```
  robot tests/
 ```
