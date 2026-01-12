@@ -1,6 +1,6 @@
 import { Subject } from 'rxjs';
 // import Services from './Services'
-import uuid from 'uuid/v4'
+import { v4 as uuid } from 'uuid';
 
 const subject = new Subject();
 // const ServiceModel =  new Services();
